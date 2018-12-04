@@ -8,3 +8,20 @@
 //
 //
 // Your code here
+
+const Chocolate = require('./Chocolate')
+const Peanut = require('./Peanut')
+const Cheese = require('./Cheese')
+const Oven = require('./Oven')
+
+let chocolate = new Chocolate()
+let peanut = new Peanut()
+let cheese = new Cheese()
+
+let oven = new Oven()
+
+oven.addToTray(chocolate)
+oven.addToTray(peanut)
+oven.addToTray(cheese)
+
+oven.bake(35)
