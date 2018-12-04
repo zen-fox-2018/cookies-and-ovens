@@ -16,7 +16,7 @@ class Oven {
                 this.kueAtOven[i].status = 'hangus'
             } else if(this.startTime == this.kueAtOven[i].timeMasak){
                 this.kueAtOven[i].status = 'matang'
-            } else if(this.startTime >= 10){
+            } else if(this.startTime >= this.kueAtOven[i].timeMasak - 5){
                 this.kueAtOven[i].status = 'hampir matang'
             }
             console.log(`${this.kueAtOven[i].name}, menit ke ${this.startTime} : ${this,this.kueAtOven[i].status}`)
