@@ -14,40 +14,48 @@ class Oven {
     this.tray =[]
   }
   bake(time) {
-    // for (let i = 0; i <= time; i+=5) {
-    //   this.tray.forEach(x => {
-    //     let status = x.status
-    //     if (i > x.finished) {
-    //       status = 'hangus'
-    //     } else if (i === x.finished ){
-    //       status = 'matang'
-    //     } else if (i >=  x.finished - 10 ) {
-    //       status = 'hampir matang'
-    //     }
-    //     console.log(`Kue ${x.name}, menit ke ${i} : ${status}`)
-
-    //   })
-    //   console.log(`=============================`)
-    // }
-
-    this.tray.forEach(x => {
-      for (let i = 0; i <= time; i+=5) {
-        let status = x.status
-        if (i > x.finished) {
-          status = 'hangus'
-        } else if (i === x.finished ){
-          status = 'matang'
-        } else if (i >=  x.finished - 10 ) {
-          status = 'hampir matang'
+    if (this.tray.length == 0 ) {
+      console.log(`Cannot bake, There is no cookie in the oven!`)
+    } else {
+      this.tray.forEach(x => {
+        for (let i = 0; i <= time; i+=5) {
+          let status = x.status
+          if (i > x.finished) {
+            x.status = 'hangus'
+          } else if (i === x.finished ){
+            x.status = 'matang'
+          } else if (i >=  x.finished - 10 ) {
+            x.status = 'hampir matang'
+          }
+          console.log(`Kue ${x.name}, menit ke ${i} : ${x.status}`)
         }
-        console.log(`Kue ${x.name}, menit ke ${i} : ${status}`)
-      }
-      console.log(`========================================================`)
-    })
+        console.log(`========================================================`)
+      })
+    }
   }
 
   addCookie(cookie) {
-    this.tray.push(cookie)
+    if (this.tray.length < 3) {
+      this.tray.push(cookie)
+      console.log(`Cookie in oven`)
+    } else {
+      console.log(`Oven is full`)
+    }
+  }
+
+  serve() {
+    if(this.tray.length == 0) {
+      console.log(`Oven already empty`)
+    } else {
+      this.tray.forEach(x => {
+        if (x.status == 'matang') {
+          console.log(`~ ${x.name} successfully baked`)
+        } else {
+          console.log(`${x.name} can't be eaten`)
+        }
+      })
+      this.tray = []
+    }
   }
 }
 
@@ -60,5 +68,9 @@ const oven = new Oven()
 oven.addCookie(cheese)
 oven.addCookie(chocolate)
 oven.addCookie(peanut)
-
+console.log(`======================================`)
 oven.bake(30)
+oven.serve()
+oven.bake(32)
+
+
