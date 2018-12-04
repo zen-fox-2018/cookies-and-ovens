@@ -17,15 +17,16 @@ const Cookie = require('./cookie_parent.js');
 
 
 class Oven {
-    constructor (typeofCookie,durasi) {
+    constructor (typeofCookie,durasi, waktu) {
         this.name = typeofCookie
         this.status = null
         this.durasi = durasi
+        this.waktu = waktu
     }
 
     cooking () {
         let time = 1
-        while (time <= this.durasi+5) {
+        while (time <= this.waktu) {
             if(time/this.durasi < 0.5) {
                 this.status = 'mentah'
             }else if (time/this.durasi > 0.5 && time < this.durasi) {
@@ -46,16 +47,16 @@ class Oven {
 
 console.log('KUE KACANG')
 let kacang = new Kacang ()
-let masakKacang = new Oven (kacang.name, kacang.durasi)
+let masakKacang = new Oven (kacang.name, kacang.durasi, 25)
 masakKacang.cooking()
 console.log(' ')
 console.log('KUE COKLAT')
 let coklat = new Coklat ()
-let masakCoklat = new Oven (coklat.name, coklat.durasi)
+let masakCoklat = new Oven (coklat.name, coklat.durasi, 40)
 masakCoklat.cooking()
 console.log(' ')
 console.log('KUE KEJU')
 let keju = new Keju ()
-let masakKeju = new Oven (keju.name, keju.durasi)
+let masakKeju = new Oven (keju.name, keju.durasi, 15)
 masakKeju.cooking()
 
